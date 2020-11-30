@@ -446,7 +446,8 @@
             foreach (ToolStripItem control in toolStrip.Items)
             {
                 control.BackColor = newBackColor;
-                if (control is MaterialToolStripMenuItem && (control as MaterialToolStripMenuItem).HasDropDown)
+                //to make it compatible with .NET FRAMEWORK 4.0: changed ().HasDropDown to ().DropDown != null
+                if (control is MaterialToolStripMenuItem && (control as MaterialToolStripMenuItem).DropDown != null)
                 {
                     //recursive call
                     UpdateToolStrip((control as MaterialToolStripMenuItem).DropDown, newBackColor);
